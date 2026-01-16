@@ -30,23 +30,6 @@ blueprint:
             domain: 
               - light
               - switch
-    luminance_sensor:
-      name: Illuminance Sensor (Optional)
-      description: Sensor to determine brightness threshold for light activation.
-      selector:
-        entity:
-          domain: sensor
-          device_class: illuminance
-          multiple: false
-    luminance_required:
-      name: Luminance Threshold
-      description: Automation triggers if luminance is below this level.
-      default: 100
-      selector:
-        number:
-          min: 0
-          max: 1000
-          unit_of_measurement: lx
     no_motion_wait:
       name: Wait Time
       description: Time to wait before turning off lights after no motion is detected.
@@ -68,36 +51,6 @@ blueprint:
       default: "00:00:00"
       selector:
         time: {}
-    elevation:
-      name: Sun Elevation
-      default: Always
-      selector:
-        select:
-          options:
-            - Always
-            - Below horizon
-            - Above horizon
-    elevation_adjustment:
-      name: Sun Elevation Adjustment
-      description: Adjust sun position
-      default: 0
-      selector:
-        number:
-          min: -90
-          max: 90
-          unit_of_measurement: degrees
-          mode: slider
-          step: 1
-    automation_blocker:
-      name: Automation Blocker (Optional)
-      description: Run only if this entity is in the desired state.
-      selector:
-        entity: {}
-    automation_blocker_boolean:
-      name: Automation Blocker State
-      default: false
-      selector:
-        boolean: {}
     motion_off_blocker:
       name: Motion Off Blocker (Optional)
       description: Block the "off" action if this entity is in the desired state.
@@ -108,24 +61,6 @@ blueprint:
       default: false
       selector:
         boolean: {}
-    scene_ambient:
-      name: Ambient Scene (Optional)
-      description: Scene to activate when no motion is detected.
-      default: scene.none
-      selector:
-        entity:
-          domain: scene
-          multiple: false
-    time_scene_ambient_start:
-      name: Ambient Scene Start Time (Optional)
-      default: "00:00:00"
-      selector:
-        time: {}
-    time_scene_ambient_end:
-      name: Ambient Scene End Time (Optional)
-      default: "00:00:00"
-      selector:
-        time: {}
 
 mode: restart
 max_exceeded: silent
